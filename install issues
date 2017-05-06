@@ -1,2 +1,86 @@
 sublimetext2即使卸载后他的配置文件还是会保存在电脑的硬盘中，即使重新装sublimetext2也会继续使用之前的配置文件，所以如果想要完全重新安装，要删除它的配置文件，他的配置文件保存在：C:\Users\Asus\AppData\Roaming\Sublime Text 2这里，但是根据不同的电脑或者不用的系统版本会不同，具体情况具体分析，或者可以进行全局搜索sublime也是可以的，sublime text2文件夹删除后所有的配置文件就全都没了，重新安装sublime就是全新的了 
 
+Sublime Text 3安装及使用所遇问题及解决方法
+标签： sublime安装
+2015-10-06 14:32 2288人阅读 评论(0) 收藏 举报
+ 分类： 编辑器
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+本人第一次写博客，如果有哪里写的不对或者不好的地方，你倒是来打我啊。
+
+写这篇文章的初衷是总结一些sublime安装及使用过程中的问题和解决的方法，不能算做教程吧。只是感觉像sublime贴吧里面有很多人在问，而网上的解答很少，或者并不系统，本人借鉴其他网友的方法并结合自己的摸索，分享经验，希望能够帮助到一部分人。废话不多说，下面我和大家分享一下自己在安装及使用是所遇到的问题及解决的方案：
+
+首先，sublime text这款代码编辑器是我见过的最好用的，它具有漂亮的界面及强大的功能。漂亮的界面很重要，就和找一个漂亮的女朋友很重要是一样的。Coding是一种心情，没有漂亮的界面怎么行？（哎，这个看脸的世界啊！！！）
+
+我的系统是window 10，软件用的是流风清音修改的32位版本（链接：http://pan.baidu.com/s/1kTxVpen 密码：8r9p）
+
+第一步，检查编译器，按Windows键+R，输入cmd，调出cmd窗口，输入gcc -v（c后面有一个空格），出现如图所示的版本号即可。
+
+
+如果没有正常出现，检查电脑是否有编译器，如果没有下载MinGW(链接：http://pan.baidu.com/s/1kTlKaQr 密码：5ppy)，然后设置环境变量。
+
+右击我的电脑，属性-->高级-->环境变量。
+
+1、 在系统环境变量PATH里添加C:\MinGW\bin。（记得添加英文分号;）
+
+2、 新建LIBRARY_PATH变量，在值中加入C:\MinGW\lib。
+
+3、 新建C_INCLUDEDE_PATH变量，值设为C:\MinGW\include。
+
+第二步，安装sublime。
+
+第三步，打开sublime。
+
+1、创建新的编译系统。工具->编译系统->新编译系统。然后出现untitled.sublime-build，删除里面的内容，粘贴以下代码：
+
+
+[plain] view plain copy
+{  
+"cmd": ["g++", "${file}", "-o","${file_path}/${file_base_name}"],  
+"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:?(.*)$",  
+"working_dir": "${file_path}",  
+"encoding":"cp936",  
+"selector": "source.c",  
+"variants":  
+[  
+{  
+"name": "Run",  
+"cmd": ["cmd","/C","g++", "${file}", "-o","${file_path}/${file_base_name}", "&&","start","cmd","/c", "${file_path}/${file_base_name} & pause"]  
+}  
+]  
+}  
+点击文件->保存，文件夹默认，文件名CPP.sublime-build，关闭窗口。
+2、随便哪个盘新建一个文件夹（保存代码文件用的）英文名，中间不要有空格！中间不要有空格！中间不要有空格！sublime新建一个文件，放在刚才建的文件夹下面，保存为ceshi.cpp，写一段简单的代码，如：
+
+
+[cpp] view plain copy
+#include<stdio.h>  
+int main()  
+{  
+   printf("123 hello 你好");  
+   return 0;  
+}  
+选择编译系统->CPP，按Ctrl+B编译，按Ctrl+Shift+B，弹出cmd窗口，此时中文不能正常显示。
+
+
+选择文件->刷新文件编码->Chinese Simplified（GBK），此时，若代码中“你好”乱码，删掉乱码，改为“你好”，然后选择文件->设置文件编码->Chinese Simplified（GBK）即可，效果如下图：
+
+
+
+此时，sublime已经可以编写程序了，但是，个人感觉初始界面并不好看，而且，还有一个很重要的问题——sublime的一个很重要的插件Package Control无法使用。
+
+比如，我们选择首选项->插件控制，在弹出的界面用鼠标点击安装插件，结果没有反应或者弹出以下提示：
+
+
+
+我在网上看到有网友谈到这个问题，说是与IPv6有关，还需要修改hosts文件，我没有采用那种方式，而是自己摸索，把问题解决掉了，方法如下：
+
+
+
+第四步，找到sublime的安装目录Sublime Text 3\Data\Packages，把Package目录下的Package Control文件夹删除。然后下载这个文件链接：http://pan.baidu.com/s/1sjstv4p 密码：m66r，把这个文件放在Sublime Text 3\Data\Installed Packages目录和Sublime Text 3\Data\Packages\User（两个目录都要放）下即可。
+
+然后可以试一下，重启sublime，按快捷键Ctrl+Shift+P，在搜索框里输入install，敲回车，会出现如下界面：
+
+
+
+好了，这说明插件已经可以正常使用了。你可以使用这个插件联网安装一些其他的有用的插件和主题，对于一些插件和主题，我会陆陆续续更新，谢谢！
