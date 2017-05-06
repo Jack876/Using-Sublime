@@ -1,0 +1,2 @@
+sublimetext2即使卸载后他的配置文件还是会保存在电脑的硬盘中，即使重新装sublimetext2也会继续使用之前的配置文件，所以如果想要完全重新安装，要删除它的配置文件，他的配置文件保存在：C:\Users\Asus\AppData\Roaming\Sublime Text 2这里，但是根据不同的电脑或者不用的系统版本会不同，具体情况具体分析，或者可以进行全局搜索sublime也是可以的，sublime text2文件夹删除后所有的配置文件就全都没了，重新安装sublime就是全新的了 
+
