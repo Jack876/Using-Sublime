@@ -10,3 +10,11 @@ In the text box, start typing View In Browser until that package is selected. On
 Restart Sublime Text.
 
 Now when you have a web page open in Sublime Text, just press Ctrl-Alt-V & your browser selection tool should open, letting you choose which browser to open.
+
+
+Install the View In Browser plugin using Package Control or download package from github and unzip this package in your packages folder(that from browse packages)
+
+after this, go to Preferences, Key Bindings - User, paste this
+
+[{ "keys": [ "f12" ], "command": "view_in_browser" }]
+now F12 will be your shortcut key.
