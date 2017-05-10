@@ -1,0 +1,12 @@
+Method 1: Install the View In Browser plugin ↩
+This is the easiest method, but I couldn't get it to work on my Mac. Note that I'm assuming you've installed the Package Control extension for Sublime Text.
+
+Press Command-Shift-P (if you use a Mac) & Ctrl-Shift-P (if you use Windows) to open the Command Palette.
+
+Type Install Package until you see that "Package Control: Install Package" is selected. Press Enter.
+
+In the text box, start typing View In Browser until that package is selected. Once it is, press Enter to install it.
+
+Restart Sublime Text.
+
+Now when you have a web page open in Sublime Text, just press Ctrl-Alt-V & your browser selection tool should open, letting you choose which browser to open.
